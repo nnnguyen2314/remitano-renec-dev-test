@@ -23,7 +23,6 @@ const postVideo = (request, response, next) => {
 };
 
 const fetchVideoInfo = (request, response, next) => {
-    // const videoUrl = request.params.videoUrl;
     const videoId = request.params.Id;
     fetchVideoInfoFromYoutube(videoId)
         .then((data) => {

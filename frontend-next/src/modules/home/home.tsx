@@ -1,5 +1,4 @@
 import * as React from "react";
-import Image from "next/image";
 import VideoListContainer from "@modules/video/features/videoList/containers/VideoListContainer";
 
 export const Home: React.FC = () => {

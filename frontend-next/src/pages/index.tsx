@@ -4,6 +4,7 @@ import useUserService from "@modules/user/hooks/useUserService";
 import {useEffect} from "react";
 import {useAppDispatch} from "@modules/core/hooks";
 import VideoListContainer from "@modules/video/features/videoList/containers/VideoListContainer";
+import VideoListContainerWithPlaying from "@modules/video/features/videoList/containers/VideoListContainerWithPlaying";
 
 const IndexPage: NextPage = () => {
     const dispatch = useAppDispatch();
@@ -17,7 +18,8 @@ const IndexPage: NextPage = () => {
 
     return (
         <RootLayout>
-            <VideoListContainer />
+            {/*<VideoListContainer />*/}
+            <VideoListContainerWithPlaying />
         </RootLayout>
     );
 };

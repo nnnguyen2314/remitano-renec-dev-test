@@ -1,64 +1,64 @@
 import React from "react";
-import {Card, Col, Collapse, Row, Space, Tag, Typography} from "antd";
+import {Card, Col, Collapse, Image, Row, Space, Tag, Typography} from "antd";
 import styled from "styled-components";
 import {CaretRightOutlined, DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined} from "@ant-design/icons";
+import Link from "next/link";
 
 const { Meta } = Card;
 const { Title, Paragraph } = Typography;
 
 interface VideoDetailProps {
-    videoUrl: string,
-    videoInfo: object,
-    sharedBy: object
+    videoInfo: object
 }
 
 const VideoDetail = (props: VideoDetailProps) => {
-    const { videoUrl, videoInfo, sharedBy } = props;
-
+    const { videoInfo } = props;
     return (
-        <Row>
-            <Col span={24}>
-                <Row>
-                    <Col span={24}>
-                        <iframe
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            src={`https://youtube.com/embed/${videoInfo?.snippet?.id}`}
-                            width='100%'
-                            height='400px'
-                            allowFullScreen
-                            title={videoInfo?.snippet?.title} />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col span={24}>
-                        <Title level={5}>{videoInfo?.snippet?.title}</Title>
-                        {sharedBy && <Typography variant="subtitle2" color="textSecondary">Shared by: {sharedBy}</Typography>}
-                    </Col>
-                </Row>
-                {videoInfo?.statistics && (
-                    <Row>
-                        <Col span={24}>
-                            <Space size="small">
-                                <Tag color="#3b5999" icon={videoInfo?.statistics?.likeCount ? <LikeFilled color="#ffffff"/> : <LikeOutlined color="#ffffff" />}>
-                                    {videoInfo?.statistics?.likeCount || ''}
-                                </Tag>
-                                <Tag icon={videoInfo?.statistics?.dislikeCount ? <DislikeFilled color="#ffffff"/> : <DislikeOutlined color="#ffffff" />}>
-                                    {videoInfo?.statistics?.dislikeCount || ''}
-                                </Tag>
-                            </Space>
-                        </Col>
-                    </Row>
+        <Space
+            direction="vertical"
+            size="small"
+            style={{ display: 'flex', margin: '10px', justifyItems: 'center'}}
+        >
+            <div>
+                <iframe
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    src={`https://youtube.com/embed/${videoInfo?.video?.id}`}
+                    width='100%'
+                    height='400px'
+                    allowFullScreen
+                    title={videoInfo?.video?.snippet?.title} />
+            </div>
+            <div>
+                <Link href={`https://youtube.com/embed/${videoInfo?.video?.id}`}>
+                    <Title ellipsis={{ rows: 1, tooltip: videoInfo?.video?.snippet?.title }} type="secondary" style={{ margin: 'auto' }} level={5}>
+                        {videoInfo?.video?.snippet?.title}
+                    </Title>
+                </Link>
+                {videoInfo?.user && <Typography variant="subtitle2" color="textSecondary">Shared by: {videoInfo?.user}</Typography>}
+            </div>
+            <div>
+                {videoInfo?.video?.statistics && (
+                    <Space size="small">
+                        <Tag color="#3b5999" icon={videoInfo?.video?.statistics?.likeCount ? <LikeFilled color="#ffffff"/> : <LikeOutlined color="#ffffff" />}>
+                            {videoInfo?.video?.statistics?.likeCount || ''}
+                        </Tag>
+                        <Tag icon={videoInfo?.video?.statistics?.dislikeCount ? <DislikeFilled color="#ffffff"/> : <DislikeOutlined color="#ffffff" />}>
+                            {videoInfo?.video?.statistics?.dislikeCount || ''}
+                        </Tag>
+                    </Space>
                 )}
-                <Row>
-                    <Col span={24}>
-                        <Title level={4} style={{margin: 0}}>Description</Title>
+            </div>
+            <div>
+                <Space size="small" direction="vertical">
+                    <Title level={4} style={{margin: 0}}>Description</Title>
+                    <div style={{minHeight: '300px', maxHeight: '400px', overflowY: "auto"}}>
                         <Paragraph style={{textAlign: 'justify'}} ellipsis={{ rows: 2, expandable: true, symbol: 'more' }}>
-                            {videoInfo?.snippet?.description}
+                            {videoInfo?.video?.snippet?.description}
                         </Paragraph>
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
+                    </div>
+                </Space>
+            </div>
+        </Space>
     );
 };
 

@@ -10,25 +10,8 @@ const VideoListContainer = () => {
     const { selector, handleFetchVideoList } = useVideoListService();
 
     useEffect(() => {
-        handleFetchVideoList().then((res) => {
-            console.log(selector.videoList);
-        });
+        handleFetchVideoList();
     }, []);
-
-    const renderVideoItem = (item: any, index: number) => {
-        console.log(item);
-        return (
-            <List.Item>
-                <List.Item.Meta
-                    avatar={
-                        <Avatar src={item?.video?.snippet?.thumbnails?.default?.url} />
-                    }
-                    title={<a target="_blank" href={`https://youtube.com/embed/${vid?.video?.snippet?.id}`}>{item?.video?.snippet?.title}</a>}
-                    description={item?.video?.snippet?.description}
-                />
-            </List.Item>
-        )
-    };
 
     return (
         <div>
@@ -38,7 +21,7 @@ const VideoListContainer = () => {
                 </Col>
             </Row>
             <Row>
-                <VideoList videoList={selector.videoList} />
+                <VideoList videoList={selector.videoList} layout="grid" />
             </Row>
         </div>
     );
