@@ -54,11 +54,11 @@ const RootLayout = ({children}: { children: React.ReactNode }) => {
                 <div className="branding">
                     <div className="branding-logo">
                         <Link href="/">
-                            <HomeFilled />
+                            <HomeFilled style={{color: "#2db7f5"}} />
                         </Link>
                     </div>
                     <div className="branding-name">
-                        <Title level={2}>Funny Movies</Title>
+                        <Title style={{color: "#FF165C"}} level={2}>Funny Movies</Title>
                     </div>
                 </div>
                 <div className="user-info">

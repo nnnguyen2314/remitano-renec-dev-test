@@ -5,7 +5,7 @@ import {Button, Space, Typography} from "antd";
 const AccountInfoWrapper = styled(Space)`
 `;
 
-const { Text, Link } = Typography;
+const { Text, Link, Title } = Typography;
 
 interface AccountInfoPropType {
     userInfo: Object,
@@ -19,8 +19,8 @@ const AccountInfo: React.FC<AccountInfoPropType> = (props: AccountInfoPropType) 
         <AccountInfoWrapper align="center" size="middle">
             <div className="user-info">
                 <Space align="center" size="small">
-                    <Text>Hello,</Text>
-                    <Text>{userInfo?.email}</Text>
+                    <Text>Welcome</Text>
+                    <Title level={5} style={{margin: '0'}}>{userInfo?.email}</Title>
                 </Space>
             </div>
             <div className="user-actions">
