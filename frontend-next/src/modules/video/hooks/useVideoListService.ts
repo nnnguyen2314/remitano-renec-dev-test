@@ -1,0 +1,20 @@
+import {useAppDispatch, useAppSelector} from "@modules/core/hooks";
+import {shallowEqual} from "react-redux";
+import {useCallback} from "react";
+import {fetchVideoList, getVideoState} from "@modules/video/store/videoSlice";
+
+const useVideoListService = () => {
+    const dispatch = useAppDispatch();
+    const selector = useAppSelector(getVideoState, shallowEqual);
+
+    const handleFetchVideoList = useCallback(() => {
+        return dispatch(fetchVideoList());
+    }, []);
+
+    return {
+        selector,
+        handleFetchVideoList
+    }
+};
+
+export default useVideoListService;

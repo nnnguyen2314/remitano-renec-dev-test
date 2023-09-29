@@ -20,6 +20,7 @@ authRoute.post('/api/auth', authAPIRouters.doAuth);
 authRoute.get('/api/profile', authAPIRouters.doAuthCheck, authAPIRouters.fetchProfile);
 
 videoRoute.get('/api/videos', videoAPIRouters.fetchVideos);
+videoRoute.get('/api/videoInfo/:videoUrl', videoAPIRouters.fetchVideoInfo);
 videoRoute.post('/api/video', authAPIRouters.doAuthCheck, videoAPIRouters.postVideo);
 
 app.use(authRoute);

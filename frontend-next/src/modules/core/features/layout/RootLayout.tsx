@@ -1,7 +1,9 @@
 import React from 'react';
 import { Layout, Typography } from 'antd';
-import {HomeOutlined} from "@ant-design/icons";
-import styled, { css } from 'styled-components';
+import {HomeFilled, HomeOutlined} from "@ant-design/icons";
+import styled from 'styled-components';
+import UserContainer from "@modules/user/features/containers/UserContainer";
+import Link from "next/link";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -41,6 +43,8 @@ const StyledContent = styled(Content)`
   display: flex;
   flex-flow: row;
   height: auto;
+  padding: 0 50px;
+  width: 100%;
 `;
 
 const RootLayout = ({children}: { children: React.ReactNode }) => {
@@ -49,14 +53,16 @@ const RootLayout = ({children}: { children: React.ReactNode }) => {
             <StyledLayoutHeader>
                 <div className="branding">
                     <div className="branding-logo">
-                        <HomeOutlined />
+                        <Link href="/">
+                            <HomeFilled />
+                        </Link>
                     </div>
                     <div className="branding-name">
                         <Title level={2}>Funny Movies</Title>
                     </div>
                 </div>
                 <div className="user-info">
-                    User
+                    <UserContainer />
                 </div>
             </StyledLayoutHeader>
             <StyledContent>

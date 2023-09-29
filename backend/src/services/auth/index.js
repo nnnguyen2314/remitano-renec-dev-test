@@ -1,8 +1,5 @@
 const firebase = require('firebase');
-const {firestoreConfigs} = require('../../utils/firebase/config');
 const { admin, db } = require('../../utils/firebase');
-
-firebase.initializeApp(firestoreConfigs);
 
 const checkAuth = async (token) => {
     return new Promise((resolve) => {
@@ -26,6 +23,7 @@ const doLogin = async (email, password) => {
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then((data) => {
+                console.log(data);
                 return data.user.getIdToken();
             })
             .then((token) => {

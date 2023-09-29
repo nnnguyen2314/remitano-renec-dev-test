@@ -1,6 +1,7 @@
 const { admin, db } = require('../../utils/firebase');
 const { extractYoutubeVideoIdFromURL } = require('../../utils/common');
 const {YOUTUBE_VIDEO_KEY, FETCH_VIDEO_INFO_API_URL} = require("../../misc/constants");
+const axios = require("axios");
 
 const getAllVideos = () => {
     return new Promise((resolve) => {
@@ -59,12 +60,12 @@ const addVideo = (video) => {
     });
 };
 
-const fetchVideoInfoFromYoutube = (url) => {
-    const videoId = extractYoutubeVideoIdFromURL(url);
+const fetchVideoInfoFromYoutube = (videoId) => {
+    // const videoId = extractYoutubeVideoIdFromURL(url);
     const params = {
         id: videoId,
         key: YOUTUBE_VIDEO_KEY,
-        part: 'snippet',
+        part: 'snippet,contentDetails,statistics,status',
     };
 
     return new Promise((resolve) => {

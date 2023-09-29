@@ -1,9 +1,13 @@
+const firebase = require("firebase");
 const admin = require('firebase-admin');
-const {firebaseCredentials} = require("./config");
+const {firebaseCredentials, firestoreConfigs} = require("./config");
 
+firebase.initializeApp(firestoreConfigs);
 admin.initializeApp({
     credential: admin.credential.cert(firebaseCredentials),
-    databaseURL: 'https://remitano-dev-test.firebaseio.com',
+    databaseURL: 'https://remitano-renec-dev-test.firebaseio.com',
 });
+
 const db = admin.firestore();
-module.exports = {admin, db};
+module.exports = {firebase, admin, db};
+

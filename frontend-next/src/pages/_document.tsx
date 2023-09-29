@@ -14,7 +14,6 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <title>Funny Movies</title>
                     <meta name="description" content="Remitano Renec Dev Coding Test" />
                     <link rel="icon" href="/favicon.ico" />
                     <link rel="preconnect" href="https://fonts.googleapis.com"/>
