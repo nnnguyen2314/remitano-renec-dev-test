@@ -38,28 +38,37 @@ const VideoSharingContainer = () => {
 
     const handleLoadingYoutubeUrl = async (youtubeVideoUrl) => {
         setIsLoadingYoutubeVideo(true);
-        handleFetchVideoInfoFromYoutube(youtubeVideoUrl)
-            .then((res) => {
-                setIsLoadingYoutubeVideo(false);
-                if (!res?.isError) {
-                    setYoutubeUrl(youtubeVideoUrl);
-                    setYoutubeVideoInfo(res?.video?.info);
-                } else {
+        if (youtubeVideoUrl) {
+            handleFetchVideoInfoFromYoutube(youtubeVideoUrl)
+                .then((res) => {
+                    setIsLoadingYoutubeVideo(false);
+                    if (!res?.isError) {
+                        setYoutubeUrl(youtubeVideoUrl);
+                        setYoutubeVideoInfo({
+                            user: userSelector.userState.currentUser.email,
+                            videUrl: youtubeUrl,
+                            video: res?.video?.info
+                        });
+                    } else {
+                        notification.error({
+                            message: res?.error,
+                            duration: 10,
+                            className: 'notification-error'
+                        });
+                    }
+                })
+                .catch((err) => {
+                    setIsLoadingYoutubeVideo(false);
                     notification.error({
-                        message: res?.error,
+                        message: err.message,
                         duration: 10,
                         className: 'notification-error'
                     });
-                }
-            })
-            .catch((err) => {
-                setIsLoadingYoutubeVideo(false);
-                notification.error({
-                    message: err.message,
-                    duration: 10,
-                    className: 'notification-error'
-                });
-            })
+                })
+        } else {
+            setIsLoadingYoutubeVideo(false);
+            setYoutubeVideoInfo(null);
+        }
     };
 
     const handleSharing = () => {
@@ -68,7 +77,6 @@ const VideoSharingContainer = () => {
             videoUrl: youtubeUrl,
             video: youtubeVideoInfo,
         }).then((res) => {
-            console.log(res);
             if (!res?.payload?.data?.isError) {
                 notification.success({
                     message: res?.payload?.data?.message || 'Shared successfully!',

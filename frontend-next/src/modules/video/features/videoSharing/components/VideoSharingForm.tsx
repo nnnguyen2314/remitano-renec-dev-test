@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button, Form, Input} from "antd";
 import styled from "styled-components";
 
@@ -20,6 +20,7 @@ interface VideoSharingFormProps {
 
 const VideoSharingForm = (props: VideoSharingFormProps) => {
     const [form] = Form.useForm();
+    const inputYoutubeUrl = Form.useWatch(form, 'youtubeVideoUrl');
     const { handleSharing, handleLoadingYoutubeUrl } = props;
     const [youtubeVideoUrl, setYoutubeVideoUrl] = useState();
 
@@ -38,7 +39,6 @@ const VideoSharingForm = (props: VideoSharingFormProps) => {
             <Form.Item
                 name="youtubeVideoUrl"
                 validateTrigger="onBlur"
-                validateDebounce={1000}
                 rules={[
                     {
                         type: 'url',
