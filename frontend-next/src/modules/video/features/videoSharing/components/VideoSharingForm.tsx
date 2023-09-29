@@ -35,23 +35,26 @@ const VideoSharingForm = (props: VideoSharingFormProps) => {
 
     return (
         <StyledVideoSharingForm form={form} layout="inline" onFinish={handleDoSharing}>
-            <Form.Item>
+            <Form.Item
+                name="youtubeVideoUrl"
+                validateTrigger="onBlur"
+                validateDebounce={1000}
+                rules={[
+                    {
+                        type: 'url',
+                        message: 'Please enter correct url format!',
+                    },
+                    {
+                        required: true,
+                        message: 'Video Url is required!',
+                    },
+                ]}
+            >
                 <Input
                     className="youtube-video-url"
                     type="text"
-                    name="youtubeVideoUrl"
                     placeholder="Enter a video url from Youtube"
                     onChange={handleYouTubeUrlChange}
-                    rules={[
-                        {
-                            type: 'url',
-                            message: 'Please enter correct url format!',
-                        },
-                        {
-                            required: true,
-                            message: 'Video Url is required!',
-                        },
-                    ]}
                     allowClear
                 />
             </Form.Item>

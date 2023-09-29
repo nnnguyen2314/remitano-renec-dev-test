@@ -1,13 +1,16 @@
 import React, {useState} from "react";
-import {Form, Button, Input} from 'antd';
+import {Form, Button, Input, message} from 'antd';
 
 interface LoginFormProps {
     handleLogin: Function
 }
 
 const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
-    const [form] = Form.useForm();
     const { handleLogin } = props;
+
+    const [form] = Form.useForm();
+    const email = Form.useWatch('email', form);
+    const password = Form.useWatch('password', form);
 
     const [inputValues, setInputValues] = useState({
         email: '', password: ''
@@ -21,45 +24,50 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
     const handleSubmit = () => {
         if (handleLogin) {
             handleLogin({
-                email: inputValues?.email,
-                password: inputValues?.password
+                email,
+                password
             })
         }
     };
 
     return (
-        <Form form={form} layout="inline" autoComplete="off" onFinish={handleSubmit}>
-            <Form.Item>
+        <Form
+            form={form} layout="inline"
+            autoComplete="off"
+            onFinish={handleSubmit}>
+            <Form.Item
+                name="email"
+                validateTrigger="onBlur"
+                rules={[
+                    {
+                        type: 'email',
+                        message: 'Please enter correct email format!',
+                    },
+                    {
+                        required: true,
+                        message: 'Email is required!',
+                    },
+                ]}
+            >
                 <Input
-                    required
-                    name="email"
                     placeholder="Email"
                     onChange={handleInputChange}
-                    rules={[
-                        {
-                            type: 'email',
-                            message: 'Please enter correct email format!',
-                        },
-                        {
-                            required: true,
-                            message: 'Email is required!',
-                        },
-                    ]}
                 />
             </Form.Item>
-            <Form.Item>
+            <Form.Item
+                name="password"
+                validateTrigger="onBlur"
+                rules={[
+                    {
+                        required: true,
+                        message: 'Password is required!',
+                    },
+                ]}
+            >
                 <Input
-                    required
-                    name="password"
                     type="password"
                     placeholder="Password"
                     onChange={handleInputChange}
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Password is required!',
-                        },
-                    ]}
                 />
             </Form.Item>
             <Form.Item>
