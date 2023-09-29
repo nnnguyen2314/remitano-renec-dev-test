@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {Card, Col, notification, Row, Space, Spin, Typography} from "antd";
 import VideoSharingForm from "@modules/video/features/videoSharing/components/VideoSharingForm";
 import useVideoDetailService from "@modules/video/hooks/useVideoDetailService";
-import VideoDetailContainer from "@modules/video/features/videoDetail/containers/VideoDetailContainer";
 import VideoDetail from "@modules/video/features/videoDetail/components/VideoDetail";
 import styled from "styled-components";
 import useVideoSharingService from "@modules/video/hooks/useVideoSharingService";

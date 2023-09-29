@@ -1,22 +1,19 @@
 import * as React from "react";
-import styled from "styled-components";
-import {Avatar, Card} from "antd";
-import {DislikeOutlined, LikeOutlined} from '@ant-design/icons';
-
-const { Meta } = Card;
-
-const StyledCard = styled(Card)`
-  background-color: transparent;
-  width: 100%;
-  margin-bottom: 15px;
-`;
+import {Col} from "antd";
+import VideoListItem from "./VideoListItem";
 
 interface VideoListProps {
     videoList: [];
 }
 
-const VideoList: React.FC<VideoListProps> = ({ videoList }) => {
-    return <></>;
+const VideoList: React.FC<VideoListProps> = (props: VideoListProps) => {
+    const {videoList} = props;
+
+    return videoList.map((vid, key) => (
+        <Col span={6}>
+            <VideoListItem videoData={vid} />
+        </Col>
+    ));
 };
 
 export default VideoList;
