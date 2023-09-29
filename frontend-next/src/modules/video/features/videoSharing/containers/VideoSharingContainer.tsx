@@ -79,8 +79,9 @@ const VideoSharingContainer = () => {
         }).then((res) => {
             if (!res?.payload?.data?.isError) {
                 notification.success({
-                    message: res?.payload?.data?.message || 'Shared successfully!',
+                    message: res?.payload?.data?.message || 'Successfully!',
                     duration: 10,
+                    description: (<div>The video "{youtubeVideoInfo.video.snippet.title}" was shared success fully by {userSelector?.userState?.currentUser?.email}</div>),
                     className: 'notification-success'
                 });
                 router.push('/');
