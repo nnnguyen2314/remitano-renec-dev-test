@@ -9,6 +9,8 @@ const { Title } = Typography;
 const VideoListContainer = () => {
     const { selector, handleFetchVideoList } = useVideoListService();
 
+    const handleSelectVideo = () => {};
+
     useEffect(() => {
         handleFetchVideoList();
     }, [handleFetchVideoList]);
@@ -21,7 +23,7 @@ const VideoListContainer = () => {
                 </Col>
             </Row>
             <Row>
-                <VideoList videoList={selector.videoList} layout="grid" />
+                <VideoList handleSelectVideo={handleSelectVideo} videoList={selector.videoList} layout="grid" />
             </Row>
         </div>
     );

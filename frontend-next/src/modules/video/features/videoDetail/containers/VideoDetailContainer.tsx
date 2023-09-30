@@ -4,7 +4,7 @@ import useVideoDetailService from "@modules/video/hooks/useVideoDetailService";
 import {Spin} from "antd";
 
 interface VideoDetailContainerProps {
-    selectedVideo: object;
+    selectedVideo: any;
 }
 
 const VideoDetailContainer = (props: VideoDetailContainerProps) => {
@@ -15,7 +15,7 @@ const VideoDetailContainer = (props: VideoDetailContainerProps) => {
     useEffect(() => {
         if (selectedVideo) {
             handleFetchVideoInfoFromYoutube(selectedVideo?.videoUrl)
-                .then((res) => {
+                .then((res: any) => {
                     setVideoInfo({...selectedVideo, ...{video: res?.video.info}});
                 });
         }

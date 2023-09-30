@@ -8,7 +8,7 @@ const { Meta } = Card;
 const { Title, Paragraph } = Typography;
 
 interface VideoDetailProps {
-    videoInfo: object
+    videoInfo: any
 }
 
 const VideoDetail = (props: VideoDetailProps) => {
@@ -34,7 +34,7 @@ const VideoDetail = (props: VideoDetailProps) => {
                         {videoInfo?.video?.snippet?.title}
                     </Title>
                 </Link>
-                {videoInfo?.user && <Typography variant="subtitle2" color="textSecondary">Shared by: {videoInfo?.user}</Typography>}
+                {videoInfo?.user && <Typography color="textSecondary">Shared by: {videoInfo?.user}</Typography>}
             </div>
             <div>
                 {videoInfo?.video?.statistics && (

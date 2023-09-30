@@ -32,23 +32,24 @@ const VideoSharingContainer = () => {
     const router = useRouter();
     const [isLoadingYoutubeVideo, setIsLoadingYoutubeVideo] = useState(false);
     const [youtubeUrl, setYoutubeUrl] = useState('');
-    const [youtubeVideoInfo, setYoutubeVideoInfo] = useState(null);
+    const [youtubeVideoInfo, setYoutubeVideoInfo] = useState(null) as any;
     const {handleFetchVideoInfoFromYoutube, selector, userSelector} = useVideoDetailService();
     const {handleSaveVideo} = useVideoSharingService();
 
-    const handleLoadingYoutubeUrl = async (youtubeVideoUrl) => {
+    const handleLoadingYoutubeUrl = async (youtubeVideoUrl: string) => {
         setIsLoadingYoutubeVideo(true);
         if (youtubeVideoUrl) {
             handleFetchVideoInfoFromYoutube(youtubeVideoUrl)
-                .then((res) => {
+                .then((res: any) => {
                     setIsLoadingYoutubeVideo(false);
                     if (!res?.isError) {
-                        setYoutubeUrl(youtubeVideoUrl);
-                        setYoutubeVideoInfo({
-                            user: userSelector.userState.currentUser.email,
+                        const info: any = {
+                            user: userSelector.userState?.currentUser?.email,
                             videUrl: youtubeUrl,
                             video: res?.video?.info
-                        });
+                        }
+                        setYoutubeUrl(youtubeVideoUrl);
+                        setYoutubeVideoInfo(info);
                     } else {
                         notification.error({
                             message: res?.error,
@@ -76,12 +77,12 @@ const VideoSharingContainer = () => {
             user: userSelector?.userState?.currentUser?.email,
             videoUrl: youtubeUrl,
             video: youtubeVideoInfo,
-        }).then((res) => {
+        }).then((res: any) => {
             if (!res?.payload?.data?.isError) {
                 notification.success({
                     message: res?.payload?.data?.message || 'Successfully!',
                     duration: 10,
-                    description: (<div>The video {youtubeVideoInfo.video.snippet.title} was shared success fully by {userSelector?.userState?.currentUser?.email}</div>),
+                    description: (<div>The video {youtubeVideoInfo?.video?.snippet?.title} was shared success fully by {userSelector?.userState?.currentUser?.email}</div>),
                     className: 'notification-success'
                 });
                 router.push('/');
@@ -112,7 +113,7 @@ const VideoSharingContainer = () => {
                     <Col span={24}>
                         <div className="video-preview-wrapper">
                             <Spin spinning={isLoadingYoutubeVideo}>
-                                {youtubeVideoInfo && <VideoDetail videoUrl={youtubeUrl} videoInfo={youtubeVideoInfo} />}
+                                {youtubeVideoInfo && <VideoDetail videoInfo={youtubeVideoInfo} />}
                             </Spin>
                         </div>
                     </Col>

@@ -7,8 +7,7 @@ import Link from "next/link";
 const { Title } = Typography;
 
 interface VideoListItemProps {
-    videoData: object;
-    handleSelectVideo: any;
+    videoData: any;
 }
 
 const VideoListItem: React.FC<VideoListItemProps> = (props: VideoListItemProps) => {

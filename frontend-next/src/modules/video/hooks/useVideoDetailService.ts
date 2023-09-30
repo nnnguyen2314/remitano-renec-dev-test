@@ -14,7 +14,7 @@ const useVideoDetailService = () => {
 
         return new Promise((resolve) => {
             api.fetchVideoInfoFromYoutube(videoId)
-                .then((res) => {
+                .then((res: any) => {
                     resolve({isError: false, video: {id: videoId, info: res.data.items[0]}});
                 })
                 .catch((err) => {

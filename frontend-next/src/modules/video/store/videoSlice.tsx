@@ -3,9 +3,9 @@ import api from "@modules/video/misc/api";
 import {get} from "lodash";
 
 export interface VideoState {
-    videoList: Array<Object>;
-    loading: Boolean;
-    message: String;
+    videoList: any[];
+    loading: boolean;
+    message: string;
 };
 
 export const stateKey = 'video';
@@ -58,7 +58,7 @@ export const videoSlice = createSlice({
 
 export const getVideoState = (state: VideoState) => {
     const videoState = get(state, stateKey, initialState);
-    const videoList = get(videoState, 'videoList', initialState.videoList);
+    const videoList = get(videoState, 'videoList', initialState.videoList || []);
     const loading = get(videoState, 'loading', initialState.loading);
     const message = get(videoState, 'message', initialState.message);
 

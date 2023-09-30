@@ -20,9 +20,8 @@ interface VideoSharingFormProps {
 
 const VideoSharingForm = (props: VideoSharingFormProps) => {
     const [form] = Form.useForm();
-    const inputYoutubeUrl = Form.useWatch(form, 'youtubeVideoUrl');
     const { handleSharing, handleLoadingYoutubeUrl } = props;
-    const [youtubeVideoUrl, setYoutubeVideoUrl] = useState();
+    const [youtubeVideoUrl, setYoutubeVideoUrl] = useState('');
 
     const handleYouTubeUrlChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = evt.target;

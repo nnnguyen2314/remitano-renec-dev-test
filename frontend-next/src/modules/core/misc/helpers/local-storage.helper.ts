@@ -13,15 +13,17 @@ export class LocalStorage {
     }
 
     static setAuthentication(token: string) {
-        jsCookie.set(ACCESS_TOKEN_KEY, token);
+        return jsCookie.set(ACCESS_TOKEN_KEY, token);
     }
 
     static setUserProfile(user: object) {
-        jsCookie.set(USER_PROFILE_KEY, JSON.stringify(user));
+        return jsCookie.set(USER_PROFILE_KEY, JSON.stringify(user));
     }
 
     static getUserProfile() {
-        jsCookie.get(USER_PROFILE_KEY);
+        return jsCookie.get(USER_PROFILE_KEY)
+            ? JSON.parse(jsCookie.get(USER_PROFILE_KEY) || '')
+            : null;
     }
 
     static getAuthenticationInfo() {

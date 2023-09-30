@@ -11,12 +11,12 @@ const VideoListContainerWithPlaying = () => {
     const { selector, handleFetchVideoList } = useVideoListService();
     const [selectedVideo, setSelectedVideo] = useState(null);
 
-    const handleSelectVideo = (video) => {
+    const handleSelectVideo = (video: any) => {
         setSelectedVideo(video);
     }
 
     useEffect(() => {
-        handleFetchVideoList().then((res) => {
+        handleFetchVideoList().then((res: any) => {
             if (res?.payload?.data?.data && res?.payload?.data?.data?.length > 0) {
                 setSelectedVideo(res?.payload?.data?.data[0]);
             }

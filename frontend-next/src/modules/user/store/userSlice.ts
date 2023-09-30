@@ -31,22 +31,18 @@ export const fetchProfile = createAsyncThunk('USER/FETCH_PROFILE', async () => {
     return await api.fetchProfile();
 });
 
-export const doAuthCheck = createAsyncThunk('USER/DO_CHECK_AUTHENTICATION', async () => {
-    return await api.doAuthCheck();
-});
-
 export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        logout: (state) => {
+        logout: (state: AuthState) => {
             state.currentUser = undefined;
             state.message = 'Logout Successfully!';
             state.isAuthenticated = false;
             state.accessToken = '';
             LocalStorage.revokeAuthentication();
         },
-        setAccessToken: (state: AuthState, action) => {
+        setAccessToken: (state: AuthState, action: any) => {
             const { token } = action?.payload?.data;
             state.isAuthenticated = !!token;
             state.accessToken = token;
@@ -54,7 +50,7 @@ export const userSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(doAuth.pending, (state: AuthState, action):void => {state.loading = true})
+            .addCase(doAuth.pending, (state: AuthState, action: any):void => {state.loading = true})
             .addCase(doAuth.fulfilled, (state: AuthState, action):void => {
                 const authData = action?.payload?.data;
                 state.isAuthenticated = !!authData.token;
@@ -63,12 +59,12 @@ export const userSlice = createSlice({
                 state.message = 'Success';
                 LocalStorage.setAuthentication(authData.token);
             })
-            .addCase(doAuth.rejected, (state: AuthState, action):void => {
+            .addCase(doAuth.rejected, (state: AuthState, action: any):void => {
                 state.loading = false;
                 state.isAuthenticated = false;
                 state.message = action?.payload?.error || '';
             })
-            .addCase(fetchProfile.pending, (state: AuthState, action) => {state.loading = true})
+            .addCase(fetchProfile.pending, (state: AuthState, action: any) => {state.loading = true})
             .addCase(fetchProfile.fulfilled, (state: AuthState, action) => {
                 state.loading = false;
                 const profileData = action?.payload?.data;
@@ -76,7 +72,7 @@ export const userSlice = createSlice({
                 state.message = 'Request Successfully!';
                 LocalStorage.setUserProfile(state.currentUser);
             })
-            .addCase(fetchProfile.rejected, (state: AuthState, action) => {
+            .addCase(fetchProfile.rejected, (state: AuthState, action: any) => {
                 state.loading = false;
                 state.message = action?.payload?.error || 'Request Failed';
             })
@@ -101,4 +97,4 @@ export const getUserState = (state: AuthState) => {
 };
 
 export default userSlice.reducer;
-export const { logout, setAccessToken } = userSlice.actions
+export const { logout } = userSlice.actions
