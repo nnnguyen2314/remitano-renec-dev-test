@@ -1,6 +1,6 @@
 import * as React from "react";
 import useVideoListService from "@modules/video/hooks/useVideoListService";
-import {Avatar, Col, List, Row, Typography} from "antd";
+import {Avatar, Col, List, Row, Spin, Typography} from "antd";
 import {useEffect} from "react";
 import VideoList from "@modules/video/features/videoList/components/VideoList";
 
@@ -23,7 +23,9 @@ const VideoListContainer = () => {
                 </Col>
             </Row>
             <Row>
-                <VideoList handleSelectVideo={handleSelectVideo} videoList={selector.videoList} layout="grid" />
+                <Spin spinning={selector.loading}>
+                    <VideoList handleSelectVideo={handleSelectVideo} videoList={selector.videoList} layout="grid" />
+                </Spin>
             </Row>
         </div>
     );
