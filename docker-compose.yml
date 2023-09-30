@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3001:3001"
+    networks:
+      - dev
+  frontend-next:
+    build:
+      context: ./frontend-next
+      target: runner
+    volumes:
+      - .:/build
+    command: yarn dev
+    ports:
+      - "3000:3000"
+    networks:
+      - dev
+    environment:
+      NODE_ENV: development
