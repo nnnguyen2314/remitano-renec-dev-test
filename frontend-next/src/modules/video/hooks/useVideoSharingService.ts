@@ -9,7 +9,7 @@ const useVideoSharingService = () => {
 
     const handleSaveVideo = useCallback((data: any) => {
         return dispatch(saveVideo(data));
-    }, []);
+    }, [dispatch]);
 
     return {
         selector,

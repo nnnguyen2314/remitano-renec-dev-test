@@ -15,7 +15,7 @@ const VideoSharePage: NextPage = () => {
         } else {
             router.push('/');
         }
-    }, [selector.userState.isAuthenticated]);
+    }, [selector.userState.isAuthenticated, handleFetchProfile, router]);
     return (
         <RootLayout>
             <VideoSharingContainer />

@@ -9,7 +9,7 @@ const useVideoListService = () => {
 
     const handleFetchVideoList = useCallback(() => {
         return dispatch(fetchVideoList());
-    }, []);
+    }, [dispatch]);
 
     return {
         selector,

@@ -9,15 +9,15 @@ const useUserService = () => {
 
     const handleDoAuth = useCallback((data: any) => {
         return dispatch(doAuth(data));
-    }, []);
+    }, [dispatch]);
 
     const handleFetchProfile = useCallback(() => {
         return dispatch(fetchProfile());
-    }, []);
+    }, [dispatch]);
 
     const handleDoLogout = useCallback(() => {
         dispatch(logout());
-    }, [])
+    }, [dispatch])
 
     return {
         selector,

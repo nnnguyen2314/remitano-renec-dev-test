@@ -1,9 +1,6 @@
 import {
     configureStore,
-    ThunkAction,
-    Action
 } from "@reduxjs/toolkit";
-import { createWrapper } from 'next-redux-wrapper';
 import { createLogger } from 'redux-logger';
 import reducer  from './reducer';
 import storage from "redux-persist/lib/storage";
@@ -17,7 +14,7 @@ const persistConfig = {
     whitelist: ["alert"],
 };
 
-const persistedReducer = persistReducer<RootState>(persistConfig, reducer);
+const persistedReducer = <any>persistReducer<RootState>(persistConfig, reducer);
 
 export function makeStore() {
     return configureStore({
@@ -33,6 +30,5 @@ export function makeStore() {
 const initStore = makeStore();
 export type RootState = ReturnType<typeof initStore.getState>;
 export type AppDispatch = typeof initStore.dispatch;
-// export const wrapper = createWrapper(initStore, { debug: true });
 export default initStore;
-export const persistedStore = persistStore(initStore);
+export const persistedStore = <any>persistStore(initStore);

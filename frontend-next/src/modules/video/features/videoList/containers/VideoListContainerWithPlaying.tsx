@@ -21,7 +21,7 @@ const VideoListContainerWithPlaying = () => {
                 setSelectedVideo(res?.payload?.data?.data[0]);
             }
         });
-    }, []);
+    }, [handleFetchVideoList]);
 
     return (
         <Row gutter={[16, 16]} style={{width: '100%', margin: '20px auto'}}>

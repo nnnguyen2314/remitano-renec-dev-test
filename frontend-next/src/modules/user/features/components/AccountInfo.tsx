@@ -8,7 +8,7 @@ const AccountInfoWrapper = styled(Space)`
 const { Text, Link, Title } = Typography;
 
 interface AccountInfoPropType {
-    userInfo: Object,
+    userInfo: any,
     handleDoLogout: any
 }
 
@@ -25,7 +25,7 @@ const AccountInfo: React.FC<AccountInfoPropType> = (props: AccountInfoPropType) 
             </div>
             <div className="user-actions">
                 <Space align="center" size="small">
-                    <Link type="primary" href="/videos/share">Share Video</Link>
+                    <Link href="/videos/share">Share Video</Link>
                     <Button type="primary" onClick={handleDoLogout}>Logout</Button>
                 </Space>
             </div>

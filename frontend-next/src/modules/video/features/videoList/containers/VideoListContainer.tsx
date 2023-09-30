@@ -11,7 +11,7 @@ const VideoListContainer = () => {
 
     useEffect(() => {
         handleFetchVideoList();
-    }, []);
+    }, [handleFetchVideoList]);
 
     return (
         <div>

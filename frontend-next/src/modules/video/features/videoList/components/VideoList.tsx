@@ -30,7 +30,7 @@ const VideoList: React.FC<VideoListProps> = (props: VideoListProps) => {
                             >
                                 {videoList.map((vid, key) => {
                                     return (
-                                        <div style={{ cursor: "pointer" }} onClick={(evt) => {
+                                        <div key={key} style={{ cursor: "pointer" }} onClick={(evt) => {
                                             evt.preventDefault();
                                             onVideoSelected(vid);
                                         }}>
@@ -46,7 +46,7 @@ const VideoList: React.FC<VideoListProps> = (props: VideoListProps) => {
             default:
                 return videoList.map((vid, key) => {
                     return (
-                        <Col span={6}>
+                        <Col key={key} span={6}>
                             <VideoListItem videoData={vid} />
                         </Col>
                     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Typography } from 'antd';
-import {HomeFilled, HomeOutlined} from "@ant-design/icons";
+import {HomeFilled} from "@ant-design/icons";
 import styled from 'styled-components';
 import UserContainer from "@modules/user/features/containers/UserContainer";
 import Link from "next/link";

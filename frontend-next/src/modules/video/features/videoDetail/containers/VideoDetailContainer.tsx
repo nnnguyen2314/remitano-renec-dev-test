@@ -20,7 +20,7 @@ const VideoDetailContainer = (props: VideoDetailContainerProps) => {
                 });
         }
 
-    }, [selectedVideo]);
+    }, [selectedVideo, handleFetchVideoInfoFromYoutube]);
 
     return (
         <Spin spinning={!videoInfo}>
