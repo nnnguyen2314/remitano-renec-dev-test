@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "NODE_ENV=production next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.0",
@@ -24,6 +25,7 @@
     "autoprefixer": "10.4.16",
     "axios": "^1.5.1",
     "camelcase-keys": "^9.0.0",
+    "cypress": "^13.3.0",
     "dot-prop-immutable": "^2.1.1",
     "dot-prop-immutable-chain": "^0.0.3",
     "eslint": "8.50.0",
