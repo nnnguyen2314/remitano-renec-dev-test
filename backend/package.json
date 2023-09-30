@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir build/api --source-maps=inline --verbose",
-    "start": "nodemon index.js",
+    "start": "nodemon src/index.js",
     "start:prod": "npm run build --watch & sleep 1 && nodemon --watch build build/api/index.js"
   },
   "dependencies": {
