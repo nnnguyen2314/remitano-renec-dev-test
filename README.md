@@ -77,25 +77,13 @@
 > - https://remitano-renec-dev-test-5ohq.vercel.app
 ## 2. Installation, Configuration & Running
 > ### 2.1. Installation
->> 2.1.1. General
 > >> - Create a Git repository with 2 folders `Backend` and `Frontend`
 > >> - Checkout to local machine
 >
 >> 2.1.2. Backend
-> >> - Init Express project for Backend: `npm init` -> `npm install express`
 > >> - Run `yarn install` to install dependencies
 > 
 >> 2.1.3. Frontend
-> >> - Init Next js with Typescript for Frontend: `npx create-next-app@latest` -> choose `yes`
-> >> ```bash
-> >>  - What is your project named?  my-app
-> >>  - Would you like to use TypeScript?  No / Yes => choose `Yes`
-> >>  - Would you like to use ESLint?  No / Yes
-> >>  - Would you like to use Tailwind CSS?  No / Yes
-> >>  - Would you like to use `src/` directory?  No / Yes
-> >>  - Would you like to use App Router? (recommended)  No / Yes
-> >>  - Would you like to customize the default import alias (@/*)?  No / Yes
-> >> ```
 > >> - Run `yarn install` to install dependencies
 > ### 2.2. Configuration
 >> 2.2.1. Backend
