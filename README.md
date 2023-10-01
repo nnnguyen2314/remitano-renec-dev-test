@@ -80,11 +80,12 @@
 >> 2.1.1. General
 > >> - Create a Git repository with 2 folders `Backend` and `Frontend`
 > >> - Checkout to local machine
-
 >
 >> 2.1.2. Backend
 > >> - Init Express project for Backend: `npm init` -> `npm install express`
-       >> 2.1.3. Frontend
+> >> - Run `yarn install` to install dependencies
+> 
+>> 2.1.3. Frontend
 > >> - Init Next js with Typescript for Frontend: `npx create-next-app@latest` -> choose `yes`
 > >> ```bash
 > >>  - What is your project named?  my-app
@@ -95,13 +96,25 @@
 > >>  - Would you like to use App Router? (recommended)  No / Yes
 > >>  - Would you like to customize the default import alias (@/*)?  No / Yes
 > >> ```
+> >> - Run `yarn install` to install dependencies
 > ### 2.2. Configuration
->>
+>> 2.2.1. Backend
+> >> - 
+>
+>> 2.2.2. Frontend
+> >> - Add file `.env` to define Environment Variables: run `touch .env` 
+
 > ### 2.3. Build locally & Running
 >> 2.3.1. Backend
 ```bash
 npm run start
 # or
 yarn start
+```
+>> 2.3.2. Frontend
+```bash
+npm run dev
+# or
+yarn dev
 ```
 ## 3. Deployment
