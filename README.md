@@ -103,6 +103,7 @@
 >
 >> 2.2.2. Frontend
 > >> - Add file `.env` to define Environment Variables: run `touch .env` 
+> >> - Add this variable to call API locally: `APP_API_URL=http://localhost:3100`
 
 > ### 2.3. Build locally & Running
 >> 2.3.1. Backend
